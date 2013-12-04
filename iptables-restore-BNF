@@ -25,13 +25,15 @@ This BNF is GPLv2 licensed, corresponding with the netfilter project
 
 <action>	::= ( '-j' | '-g' ) <WS> <target>
 
-<target>	::= <chain-name> | <builtin-tgt>
+<target>	::= <chain-name> | <builtin-tgt> | <tgt-module>
 
-<builtin-tgt>	::= 'ACCEPT' | 'DROP' | 'RETURN' | ( 'REJECT' | <tgt-module*> ) [ <tgt-syntax*> ]
-<tgt-module*>	=== Reference iptables-extensions(8) for available targets
+<builtin-tgt>	::= 'ACCEPT' | 'DROP'
+
+<tgt-module>	::= 'RETURN' | ( 'REJECT' | <tgt-modules*> ) [ <tgt-syntax*> ]
+<tgt-modules*>	=== Reference iptables-extensions(8) for available targets
 <tgt-syntax*>	=== Reference iptables-extensions(8) for the target module options
 
-<chars>		::= <char> [ <char> .. ]
+<chars>		::= <char> [ ( <char> | '-' ) .. ]
 <char>		::= 'A' - 'Z' | 'a' - 'z' | <digit> | '_'
 
 <digits>	::= <digit> [ <digit> .. ]
