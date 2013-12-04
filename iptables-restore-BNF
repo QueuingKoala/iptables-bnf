@@ -4,19 +4,19 @@ This BNF is GPLv2 licensed, corresponding with the netfilter project
 
 <ruleset>	::= <table-def> [ <table-def> .. ]
 
-<table-def>	::= '*' <table-name> <EOL> [ <chain-def> .. ] [ <rule> .. ] 'COMMIT' <EOL>
+<table-def>	::= '*' <table-name> [ <chain-def> .. ] [ <rule> .. ] 'COMMIT' <EOL>
 
-<table-name>	::= 'filter' | 'mangle' | 'nat' | 'raw' | 'security'
+<table-name>	::= ( 'filter' | 'mangle' | 'nat' | 'raw' | 'security' ) <EOL>
 
 <chain-def>	::= ':' <chain-name> <WS> <chain-policy> [ <WS> <counters> ] <EOL>
+
+<rule>		::= <command> [ <WS> <table-name> [ <WS> <match> [ <WS> <action> ] ] ] <EOL>
 
 <chain-name>	::= <chars>
 
 <chain-policy>	::= <builtin-tgt> | '-'
 
 <counters>	::= '[' <digits> ':' <digits> ']'
-
-<rule>		::= <command> [ <WS> <table-name> [ <WS> <match> [ <WS> <action> ] ] ] <EOL>
 
 <command>	::= '-A' | '-D' | '-F' | '-I'
 
