@@ -10,7 +10,7 @@ This BNF is GPLv2 licensed, corresponding with the Netfilter project
 
 <chain-def>     ::= ':' <chain-name> <WS> <chain-policy> [ <WS> <counters> ] <EOL>
 
-<rule>          ::= <command> [ <WS> <chain-name> [ <WS> <match> ] [ <WS> <action> ] ] <EOL>
+<rule>          ::= <command> <EOL>
 
 <chain-name>    ::= <chars>
 
@@ -18,7 +18,23 @@ This BNF is GPLv2 licensed, corresponding with the Netfilter project
 
 <counters>      ::= '[' <digits> ':' <digits> ']'
 
-<command>       ::= '-A' | '-D' | '-E' | '-F' | '-I' | '-N' | '-P' | '-R' | '-X' | '-Z'
+<command>       ::= <add> | <delete> | <rename> | <flush> | <insert> | <new>
+                  | <policy-set> | <replace> | <clear-empty> | <zero-counter>
+
+<add>           ::= '-A' <WS> <chain-name> <match-actn>
+<delete>        ::= '-D' <WS> <chain-name> [ ( <rule-num> | <match-actn> ) ]
+<rename>        ::= '-E' <WS> <chain-name> <WS> <chain-name>
+<flush>         ::= '-F' [ <WS> <chain-name> ]
+<insert>        ::= '-I' <WS> <chain-name> [ <rule-num> ] <match-actn>
+<new>           ::= '-N' <WS> <chain-name>
+<policy-set>    ::= '-P' <WS> <chain-name> <WS> <chain-policy>
+<replace>       ::= '-R' <WS> <chain-name> <rule-num> <match-actn>
+<clear-empty>   ::= '-X' [ <WS> <chain-name> ]
+<zero-counter>  ::= '-Z' [ <WS> <chain-name> ]
+
+<rule-num>      ::= <WS> <digits>
+
+<match-actn>    ::= [ <WS> <match> ] [ <WS> <action> ]
 
 <match>         ::= [ -m <module> ] <match-syntax*>
 <match-syntax*> === Reference iptables-extensions(8) for the match module options
