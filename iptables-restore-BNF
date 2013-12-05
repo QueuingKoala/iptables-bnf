@@ -10,7 +10,7 @@ This BNF is GPLv2 licensed, corresponding with the netfilter project
 
 <chain-def>	::= ':' <chain-name> <WS> <chain-policy> [ <WS> <counters> ] <EOL>
 
-<rule>		::= <command> [ <WS> <chain-name> [ <WS> <match> [ <WS> <action> ] ] ] <EOL>
+<rule>		::= <command> [ <WS> <chain-name> [ <WS> <match> ] [ <WS> <action> ] ] <EOL>
 
 <chain-name>	::= <chars>
 
@@ -18,7 +18,7 @@ This BNF is GPLv2 licensed, corresponding with the netfilter project
 
 <counters>	::= '[' <digits> ':' <digits> ']'
 
-<command>	::= '-A' | '-D' | '-F' | '-I'
+<command>	::= '-A' | '-D' | '-E' | '-F' | '-I' | '-N' | '-P' | '-R' | '-X' | '-Z'
 
 <match>		::= [ -m <module> ] <match-syntax*>
 <match-syntax*>	=== Reference iptables-extensions(8) for the match module options
