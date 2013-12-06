@@ -2,15 +2,17 @@
 
 # This BNF is GPLv2 licensed, corresponding with the Netfilter project
 
-<ruleset>       ::= <table-def> [ <table-def> .. ]
+<ruleset>       ::= <table> [ <table> .. ]
 
-<table-def>     ::= '*' <table-name> [ <chain-def> .. ] [ <rule> .. ] 'COMMIT' <EOL>
+<table>         ::= <table-def> [ <chain-def> .. ] [ <rule> .. ] 'COMMIT' <EOL>
 
-<table-name>    ::= ( 'filter' | 'mangle' | 'nat' | 'raw' | 'security' ) <EOL>
+<table-def>     ::= '*' <table-name> <EOL>
 
 <chain-def>     ::= ':' <chain-name> <WS> <chain-policy> [ <WS> <counters> ] <EOL>
 
 <rule>          ::= <command> <EOL>
+
+<table-name>    ::= ( 'filter' | 'mangle' | 'nat' | 'raw' | 'security' )
 
 <chain-name>    ::= <chars>
 
