@@ -27,7 +27,39 @@ applying the rules, but this can be avoided by adding the `-n` option. This will
 leave the existing ruleset in place, running the commands in the ruleset on top
 of the currently loaded Netfilter state.
 
-Understanding chain definitions
+It is possible to load only a specific table from a restore-file that may
+contain other tables; pass the `-t table` option, where `table` is the table
+name to load; all other tables defined in the restore-file are ignored.
+
+Additionally, the hit counters are not restored unless the `-c` flag is used.
+
+Syntax elements
+----
+
+Each line in a restore-file can be one of the following types; consult the BNF
+for precise syntax requirements.
+
+ * Comment-lines start with the `#` character and are ignored; leading
+   whitespace is allowed
+ * Lines that are blank or contain only whitespace are ignored
+ * A table definition: see `<table-def>` in the BNF
+ * A chain definition: see `<chain-def>` in the BNF
+ * A command/rule: see `<rule>` in the BNF
+ * The end of a table definition, which is the keyword `COMMIT`
+
+Table definitions
+----
+
+A restore-file contains one or more tables, and each table is introduced with a
+table definition. The table must be a valid type the kernel knows about;
+provided kernel module auto-loading is enabled, the kernel will attempt to load
+missing modules when a new table is referenced.
+
+While it is possible to specify the same table twice, this will implicitly flush
+the table both times unless the `-n` flag was passed (see above) and is best
+avoided as a result.
+
+Chain definitions
 ----
 
 All chains used in a table must be created first, generally by a chain
