@@ -9,7 +9,7 @@
 <chain-def>     ::= ':' <chain-name> <WS> <chain-policy> [ <WS> <counters> ] <EOL>
 <rule>          ::= <command> <EOL>
 
-<table-name>    ::= ( 'filter' | 'mangle' | 'nat' | 'raw' | 'security' )
+<table-name>    ::= 'filter' | 'mangle' | 'nat' | 'raw' | 'security'
 <chain-name>    ::= <chars>
 <chain-policy>  ::= <builtin-tgt> | '-'
 <counters>      ::= '[' <digits> ':' <digits> ']'
@@ -17,7 +17,7 @@
 <command>       ::= <add> | <delete> | <rename> | <flush> | <insert> | <new>
                   | <policy-set> | <replace> | <clear-empty> | <zero-counter>
 <add>           ::= '-A' <WS> <chain-name> <match-actn>
-<delete>        ::= '-D' <WS> <chain-name> [ ( <rule-num> | <match-actn> ) ]
+<delete>        ::= '-D' <WS> <chain-name> [ <rule-num> | <match-actn> ]
 <rename>        ::= '-E' <WS> <chain-name> <WS> <chain-name>
 <flush>         ::= '-F' [ <WS> <chain-name> ]
 <insert>        ::= '-I' <WS> <chain-name> [ <rule-num> ] <match-actn>
