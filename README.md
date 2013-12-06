@@ -13,6 +13,10 @@ for general Netfilter information and `iptables-extensions(8)` for specific
 match/target module operation. Both of these topics are outside the scope of
 this document.
 
+The BNF file follows a "loose" adherence to BNF definitions; use of `..` for
+continuation, `-` for ranges, `[ .. ]` for optional elements, and `( .. )` for
+grouping are all used to make the BNF more human-readable.
+
 The restore-file is composed of table definitions; each table definition
 contains one or more chain definitions and rules. These rules are loaded into
 the Netfilter state impacting the included tables. Note that tables not listed
