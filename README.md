@@ -25,7 +25,8 @@ Modes of operation
 Normally `iptables-restore` will flush each table listed in the ruleset before
 applying the rules, but this can be avoided by adding the `-n` option. This will
 leave the existing ruleset in place, running the commands in the ruleset on top
-of the currently loaded Netfilter state.
+of the currently loaded Netfilter state. Note that with `-n`, chain definitions
+implicitly flush that chain (more info on chain definitions below.)
 
 It is possible to load only a specific table from a restore-file that may
 contain other tables; pass the `-t table` option, where `table` is the table
@@ -65,6 +66,10 @@ Chain definitions
 All chains used in a table must be created first, generally by a chain
 definition; built-in chains are implicitly included, but when omitted from a
 table definition the *existing* policy on the chain is preserved.
+
+Each chain definition will implicitly flush that chain, even when using the `-n`
+flag. The only way to avoid this is to omit the chain definition, which requires
+that the chain already exist.
 
 It is also possible to preserve the existing policy when defining a chain by
 setting the policy to the character `-` (dash.) Otherwise a policy of `ACCEPT`
