@@ -2,22 +2,22 @@ iptables-restore BNF Readme
 ====
 
 This document is designed to be used along with the included BNF to describe the
-`iptables-save(8)` syntax, usable as input to `iptables-restore(8)`. Consult the
-BNF for the grammar rules.
+`iptables-restore(8)` syntax.
 
 Overview
 ----
+
+Combined with the BNF grammar description, this document explains how to create
+a valid restore-file that `iptables-restore8` can process. Consult `iptables(8)`
+for general Netfilter information and `iptables-extensions(8)` for specific
+match/target module operation. Both of these topics are outside the scope of
+this document.
 
 The restore-file is composed of table definitions; each table definition
 contains one or more chain definitions and rules. These rules are loaded into
 the Netfilter state impacting the included tables. Note that tables not listed
 in the restore-file are left alone; if not loaded into a running kernel they
 will not be loaded, and if loaded will not be modified.
-
-Combined with the BNF grammar description, this document explains how to define
-a ruleset. Consult `iptables(8)` for general Netfilter information and
-`iptables-extensions(8)` for specific match/target module operation. Both of
-these topics are outside the scope of the restore-file description.
 
 Modes of operation
 ----
