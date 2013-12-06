@@ -36,7 +36,8 @@ table definition the *existing* policy on the chain is preserved.
 
 It is also possible to preserve the existing policy when defining a chain by
 setting the policy to the character `-` (dash.) Otherwise a policy of `ACCEPT`
-or `DROP` must be specified.
+or `DROP` must be specified. Note that only the built-in chains may have target
+policies; user-defined chains must have the dash character as the chain policy.
 
 The hitcounter is optional, and ignored unless `-c` is passed to
 `iptables-restore`.
