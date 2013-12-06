@@ -8,7 +8,7 @@ Overview
 ----
 
 Combined with the BNF grammar description, this document explains how to create
-a valid restore-file that `iptables-restore8` can process. Consult `iptables(8)`
+a valid restore-file that `iptables-restore` can process. Consult `iptables(8)`
 for general Netfilter information and `iptables-extensions(8)` for specific
 match/target module operation. Both of these topics are outside the scope of
 this document.
