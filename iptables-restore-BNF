@@ -36,7 +36,7 @@ This BNF is GPLv2 licensed, corresponding with the Netfilter project
 
 <match-actn>    ::= [ <WS> <match> ] [ <WS> <action> ]
 
-<match>         ::= [ -m <module> ] <match-syntax*>
+<match>         ::= [ '-m' <module> ] <match-syntax*>
 <match-syntax*> === Reference iptables-extensions(8) for the match module options
 
 <action>        ::= ( '-j' | '-g' ) <WS> <target>
@@ -55,6 +55,6 @@ This BNF is GPLv2 licensed, corresponding with the Netfilter project
 <digits>        ::= <digit> [ <digit> .. ]
 <digit>         ::= '0' - '9'
 
-<WS>            ::= ( " " | <TAB> ) [ <WS> ]
+<WS>            ::= ( ' ' | <TAB> ) [ <WS> ]
 
 # vim: expandtab ts=4
