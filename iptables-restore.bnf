@@ -5,24 +5,17 @@
 <ruleset>       ::= <table> [ <table> .. ]
 
 <table>         ::= <table-def> [ <chain-def> .. ] [ <rule> .. ] 'COMMIT' <EOL>
-
 <table-def>     ::= '*' <table-name> <EOL>
-
 <chain-def>     ::= ':' <chain-name> <WS> <chain-policy> [ <WS> <counters> ] <EOL>
-
 <rule>          ::= <command> <EOL>
 
 <table-name>    ::= ( 'filter' | 'mangle' | 'nat' | 'raw' | 'security' )
-
 <chain-name>    ::= <chars>
-
 <chain-policy>  ::= <builtin-tgt> | '-'
-
 <counters>      ::= '[' <digits> ':' <digits> ']'
 
 <command>       ::= <add> | <delete> | <rename> | <flush> | <insert> | <new>
                   | <policy-set> | <replace> | <clear-empty> | <zero-counter>
-
 <add>           ::= '-A' <WS> <chain-name> <match-actn>
 <delete>        ::= '-D' <WS> <chain-name> [ ( <rule-num> | <match-actn> ) ]
 <rename>        ::= '-E' <WS> <chain-name> <WS> <chain-name>
@@ -34,10 +27,7 @@
 <clear-empty>   ::= '-X' [ <WS> <chain-name> ]
 <zero-counter>  ::= '-Z' [ <WS> <chain-name> ]
 
-<rule-num>      ::= <WS> <digits>
-
 <match-actn>    ::= [ <WS> <match> ] [ <WS> <action> ]
-
 <match>         ::= [ '-m' <module> ] <match-syntax>
 <module>          # Reference iptables-extensions(8) for available modules
 <match-syntax>    # Reference iptables-extensions(8) for the match module options
@@ -47,10 +37,11 @@
 <target>        ::= <chain-name> | <builtin-tgt> | <tgt-module>
 
 <builtin-tgt>   ::= 'ACCEPT' | 'DROP'
-
 <tgt-module>    ::= 'RETURN' | ( 'REJECT' | <tgt-modules> ) [ <tgt-syntax> ]
 <tgt-modules>     # Reference iptables-extensions(8) for available targets
 <tgt-syntax>      # Reference iptables-extensions(8) for the target module options
+
+<rule-num>      ::= <WS> <digits>
 
 <chars>         ::= <char> [ ( <char> | '-' ) .. ]
 <char>          ::= 'A' - 'Z' | 'a' - 'z' | <digit> | '_'
