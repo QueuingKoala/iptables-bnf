@@ -1,6 +1,6 @@
-iptables-restore BNF
+# iptables-restore BNF
 
-This BNF is GPLv2 licensed, corresponding with the Netfilter project
+# This BNF is GPLv2 licensed, corresponding with the Netfilter project
 
 <ruleset>       ::= <table-def> [ <table-def> .. ]
 
@@ -56,5 +56,3 @@ This BNF is GPLv2 licensed, corresponding with the Netfilter project
 <digit>         ::= '0' - '9'
 
 <WS>            ::= ( ' ' | <TAB> ) [ <WS> ]
-
-# vim: expandtab ts=4
